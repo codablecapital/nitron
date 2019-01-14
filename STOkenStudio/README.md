@@ -8,7 +8,7 @@ contracts to the tronChain.
 This contract will act as an entry point and a primary building block of a multi-transacrion raise scenario.
 
 ### here is a demo of it working
-https://drive.google.com/file/d/1NIdMIB1WFoIa3kx75CbU4tukuKvP8t6x/view
+https://drive.google.com/file/d/1u_J73M9Vt_T4W89XIdDE-vqqERLM8gnI
 
 ### STOKen.sol
 minting a smart contract contract via an office extension.
