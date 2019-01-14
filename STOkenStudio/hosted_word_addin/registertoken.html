@@ -1,0 +1,537 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. -->
+<!-- See LICENSE in the project root for license information -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>STOken Studio</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.debug.js"></script>
+
+    <!-- LOCAL -->
+    <!-- <link rel="stylesheet" href="node_modules/office-ui-fabric-js/dist/css/fabric.min.css" />
+    <link rel="stylesheet" href="node_modules/office-ui-fabric-js/dist/css/fabric.components.css" /> -->
+
+    <!-- CDN -->
+    <!-- For the Office UI Fabric, go to http://aka.ms/office-ui-fabric to learn more. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.min.css" />
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.components.min.css" />
+
+    <!-- Template styles -->
+    <link href="app.css" rel="stylesheet" type="text/css" />
+
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/modules/bootstrap-daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="assets/modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+  <link rel="stylesheet" href="assets/modules/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="assets/modules/jquery-selectric/selectric.css">
+  <link rel="stylesheet" href="assets/modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
+  <link rel="stylesheet" href="assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+  <link rel="stylesheet" href="assets/css/style.min.css">
+  <link rel="stylesheet" href="assets/css/components.min.css">
+
+</head>
+
+
+<body class="ms-font-m ms-welcome">
+    <section id="sideload-msg" class="ms-welcome__main">
+        <h2 class="ms-font-xl ms-fontWeight-semilight ms-fontColor-neutralPrimary ms-u-slideUpIn20">Please sideload your addin to see app body.</h2>
+    </section>
+    <main id="app-body" style="display: none;">
+        <div class="card-body">
+            <strong class="text-muted d-block mb-2">Company Information</strong>
+            <div class="form-group">
+              <label>Company Name</label>
+              <input type="text" id="COMPANY_NAME" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Officer Name</label>
+                <input type="text" id ="OFFICER_NAME" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>State</label>
+                <input type="text" id ="STATE_OF_INCORPORATION" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Jurisdiction</label>
+                <input type="text" id ="GOVERNING_LAW_JURISDICTION" class="form-control">
+            </div>
+            <strong class="text-muted d-block mb-2">&nbsp;</strong>
+            <div class="form-group">
+                    <label>Token Name</label>
+                    <input type="text" id ="CONTRACT_NAME" class="form-control">
+                </div>
+            <div class="form-group">
+                <label>Token Symbol</label>
+                <input type="text" id ="TOKEN_TICKER" class="form-control">
+            </div>
+            <div class="form-group">
+                    <label>Total Token Count</label>
+                    <input type="text" id ="CONTRACT_NAME" class="form-control">
+            </div>
+            <div class="form-group">
+                    <label>Target Raise Amount</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          $
+                        </div>
+                      </div>
+                      <input type="text" class="form-control currency">
+                    </div>
+            </div>
+            <div class="form-group">
+                    <label>Discount Percentage</label>
+                    <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                %
+                              </div>
+                            </div>
+                            <input type="text" class="form-control currency">
+                     </div>
+                </div>
+                <div class="card-footer text-right">
+                        <button class="btn btn-primary mr-1" id="submitbtn" type="submit">Submit</button>
+                </div>
+    </main>
+
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+    <script src="assets/modules/popper.js"></script>
+    <script src="assets/modules/tooltip.js"></script>
+    <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="assets/modules/moment.min.js"></script>
+    <script src="assets/js/stisla.js"></script>
+    
+    <!-- JS Libraies -->
+    <script src="assets/modules/cleave-js/dist/cleave.min.js"></script>
+    <script src="assets/modules/cleave-js/dist/addons/cleave-phone.us.js"></script>
+    <script src="assets/modules/jquery-pwstrength/jquery.pwstrength.min.js"></script>
+    <script src="assets/modules/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="assets/modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+    <script src="assets/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+    <script src="assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="assets/modules/select2/dist/js/select2.full.min.js"></script>
+    <script src="assets/modules/jquery-selectric/jquery.selectric.min.js"></script>
+  
+    <!-- Page Specific JS File -->
+    <script src="assets/js/page/forms-advanced-forms.js"></script>
+    
+    <!-- Template JS File -->
+    <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/js/fabric.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+<!-- Add the stylesheet to the head -->
+<script src="assets/js/scripts.js"></script>
+<script src="assets/js/custom.js"></script>
+
+<script src="https://unpkg.com/clippyjs@latest"></script>
+    <script>
+    Office.initialize = function (reason) {
+        OfficeExtension.config.extendedErrorLogging = true;
+        $(document).ready(function () {
+            console.log("document ready");
+            // Use this to check whether the new API is supported in the Word client.
+
+                // Load the story names from the service into the UI. 
+                $('#sideload-msg').hide();
+                $('#app-body').show();
+                httpGetAsync('https://stokenstudio.firebaseapp.com/assets/safe.docx', function(response) {
+                    displayContents(response)
+                });
+                $('#submitbtn').click(replaceTokens);
+
+        });
+    };
+    function replaceTokens(){
+        Word.run(function (ctx) {
+        console.log("doink")
+        var results = ctx.document.body.search("[COMPANY_NAME]");      //Search for the text to replace
+        ctx.load(results);
+ 
+        ctx.sync().then(function () {
+            for (var i = 0; i < results.items.length; i++) {
+            results.items[i].insertText($('#COMPANY_NAME').val(), "replace");     //Replace the text HERE
+        }
+        }).then(ctx.sync);
+        
+        var results = ctx.document.body.search("[OFFICER_NAME]");      //Search for the text to replace
+        ctx.load(results);
+ 
+        ctx.sync().then(function () {
+            for (var i = 0; i < results.items.length; i++) {
+            results.items[i].insertText($('#OFFICER_NAME').val(), "replace");     //Replace the text HERE
+        }
+        }).then(ctx.sync);
+        var results = ctx.document.body.search("[STATE_OF_INCORPORATION]");      //Search for the text to replace
+        ctx.load(results);
+        ctx.sync().then(function () {
+            for (var i = 0; i < results.items.length; i++) {
+            results.items[i].insertText($('#STATE_OF_INCORPORATION').val(), "replace");     //Replace the text HERE
+        }
+        }).then(ctx.sync);
+        var results = ctx.document.body.search("[GOVERNING_LAW_JURISDICTION]");      //Search for the text to replace
+        ctx.load(results);
+ 
+        ctx.sync().then(function () {
+            for (var i = 0; i < results.items.length; i++) {
+            results.items[i].insertText($('#GOVERNING_LAW_JURISDICTION').val(), "replace");     //Replace the text HERE
+        }
+        }).then(ctx.sync);
+        // httpGetAsync('https://tweetoken.dappstud.io/api/mint/WEED22/TLvW72EANde7QkGXzRH7bQhN6DzFHYPpCF/10000/SmokenToken22', function(response) {
+        //             displayContents(response)
+        // });
+
+    });
+    }
+    
+    function saveDocument(remote_filename){
+        Office.context.document.getFileAsync(Office.FileType.Compressed, { sliceSize: 1048576 }, function (result) {
+            var i = 0;
+            var slices = 0;
+            if (result.status == "succeeded") {
+                console.log("click inside");
+                // If the getFileAsync call succeeded, then
+                // result.value will return a valid File Object.
+                var myFile = result.value;
+                var slices = myFile.sliceCount;
+                //console.log("File size:" + myFile.size + " #Slices: " + slices);
+                // Iterate over the file slices.
+                for (i = 0; i < slices; i++) {
+                    console.log("click inside1");
+                    var slice = myFile.getSliceAsync(i, function (result) {
+                        if (result.status == "succeeded") {
+                            console.log("click inside3");
+                            var storageRef = firebase.storage().ref();
+                            var mountainsRef = storageRef.child(remote_filename+'.docx');
+                            console.log("sdasfdasf"+result.value.data.length);
+                            let bytes = new Uint8Array(result.value.data.length);
+                            for (var i = 0; i < result.value.data.length; i++) {
+                                bytes[i] = result.value.data[i];
+                            }
+                            mountainsRef.put(bytes).then(function(snapshot) {
+                                console.log('Uploaded a raw string!');
+                            });
+
+                        }
+                        else {  ``
+                            //document.getElementById("result").innerText = result.error.message;
+                        }
+                    });
+                }
+                myFile.closeAsync();
+            }
+            else {
+                //document.getElementById("result2").innerText = result.error.message;
+            }
+        });
+    }
+
+    /*********************/
+    /* Word JS functions */
+    /*********************/
+    
+    // Using the Word JS API. Clears the current document and adds a base64 docx file to the document.
+    function displayContents(myBase64) {
+        Word.run(function (context) {
+
+            // Create a proxy object for the document.
+            var thisDocument = context.document;
+            
+            // Queue a command to clear the body contents. 
+            thisDocument.body.clear();
+            
+            // Create a proxy object for the default selection. 
+            var mySelection = thisDocument.getSelection();
+            mySelection.insertFileFromBase64(myBase64, "replace");
+            
+            // Synchronize the document state by executing the queued commands, 
+            // and return a promise to indicate task completion.
+            return context.sync()
+            .then(function () {
+                // Now we want to get all of the content controls.
+                //getAllContentControls();
+            });
+        })
+        .catch(function (error) {
+            console.log('Error: ' + JSON.stringify(error));
+            if (error instanceof OfficeExtension.Error) {
+                console.log('Debug info: ' + JSON.stringify(error.debugInfo));
+            }
+        });            
+    }
+
+    // Using the Word JS API. Gets all of the content controls that are in the loaded document. 
+    function getAllContentControls() {
+        Word.run(function (context) {
+
+            // Create a proxy object for the document.
+            var thisDocument = context.document;
+
+            // Create a proxy object for the content control collection in the current document.
+            var contentControls = thisDocument.contentControls;
+
+            // Queue a command to load the tag and title properties of the content controls.
+            contentControls.load('tag, title');
+
+            // Synchronize the document state by executing the queued commands, 
+            // and return a promise to indicate task completion.
+            return context.sync(contentControls).then(function () {
+
+                // Remove duplicate content controls and get back an array of objects
+                // that represent unique fields in the add-in. For example, there may be 
+                // many content controls titled "name" in the document, but we want all
+                // content controls with the same name represented
+                // by a single field in the add-in.
+                var uniqueFields = removeDuplicateContentControls(contentControls);
+                
+                // Create HTML input fields based on the content controls.
+                createFields(uniqueFields);
+            })
+        })
+        .catch(function (error) {
+            console.log('Error: ' + JSON.stringify(error));
+            if (error instanceof OfficeExtension.Error) {
+                console.log('Debug info: ' + JSON.stringify(error.debugInfo));
+            }
+        });  
+    }
+
+    // Using the Word JS API. Set the values from the INPUT elements into the associated
+    // content controls to make the story silly. 
+    function makeSillyHandler() {
+
+        // We will only act on the INPUT elements. We assume that all INPUT
+        // elements are mapped to a content control.
+        var entryFields = document.getElementById("entryFields").querySelectorAll("input");
+
+        // I don't like this. I'm loading the content controls again.
+        Word.run(function (context) {
+
+            // Create a proxy object for the document.
+            var thisDocument = context.document;
+
+            // Create a proxy object for the content control collection in the document.
+            var contentControls = thisDocument.contentControls;
+
+            // Queue a command to load the content controls collection with the tag and title properties.
+            contentControls.load('tag, title');
+
+            // Synchronize the document state by executing the queued commands, 
+            // and return a promise to indicate task completion.
+            return context.sync()
+                .then(function () {
+
+                    var i, j;
+                
+                    // For each input element, we want to map it to the associated
+                    // content control.
+                    for (i = 0; i < entryFields.length; i++) {
+                        for (j = 0; j < contentControls.items.length; j++) {
+
+                            // Matching content control tag with the tag set as the id on each input element.
+                            // Set the content text to the text value of the INPUT element.
+                            if (contentControls.items[j].tag === entryFields[i].id) {
+                                contentControls.items[j].insertText(entryFields[i].value.trim(), Word.InsertLocation.replace)
+                            }
+                        }
+                    }
+                })
+                // Synchronize the document state by executing the queued commands, 
+                // and return a promise to indicate task completion.
+                .then(context.sync);
+        })
+        .catch(function (error) {
+            console.log('Error: ' + JSON.stringify(error));
+            if (error instanceof OfficeExtension.Error) {
+                console.log('Debug info: ' + JSON.stringify(error.debugInfo));
+            }
+        });    
+    }
+    
+    // Handles the story selection in the add-in UI. Results in a call to the service to get
+    // a docx file that contains a silly story. The silly story gets displayed in the Word UI.
+    function selectStoryHandler() {
+        
+        // Form the URL to get the docx file. Need to remove the host information by slicing
+        // off the host information beginning at ?_host_Info.
+        var fileName = this.value;
+        var currentUrl = location.href.slice(0, location.href.indexOf('?'));
+        var getFileUrl = currentUrl + 'getfile?filename=' + fileName;
+
+        // Call the helper to get the selected file then insert the file into Word.
+        httpGetAsync(getFileUrl, function(response) {
+            displayContents(response);
+        });
+    }
+
+    /********************/
+    /* UI functions     */
+    /********************/
+    
+    // Gets a list of story file names from the service and then create entries in a drop down list box.
+    // A user can choose a story once the drop down list box is populated.
+    function getStoryNames() {
+
+        // Form the URL to get the docx file list. Need to remove the host information by slicing
+        // off the host information beginning at ?_host_Info.
+        var currentUrl = location.href.slice(0, location.href.indexOf('?'));
+        var getFileNamesUrl = currentUrl + 'getfilenames';
+    
+        // Call the helper to get the file list and then create the drop down 
+        // list box from the results.
+        httpGetAsync(getFileNamesUrl, function(rawResponse) {
+
+            // Helper that processes the response so that we have an array of file names.
+            var response = processResponse(rawResponse);
+   
+            // Get a handle on the empty drop down list box.
+            var select = document.getElementById("selectStory");
+
+            // Populate the drop down list box.       
+            for(var i = 0; i < response.length; i++) {
+                var opt = response[i];
+                var el = document.createElement("option");
+                el.textContent = opt;
+                el.value = opt;
+                select.appendChild(el);
+            };
+            
+            // Initialize stylized fabric UI for dropdown. This happens after we
+            // populate the dropdown since the drop down values are copied by fabric.
+            $(".ms-Dropdown").Dropdown();
+        });
+    }    
+    
+    // Creates HTML input fields based on the content control title and tag properties.
+    // This method assumes that all content controls should be turned into HTML input fields
+    // and that the duplicate have already been removed.
+    function createFields(uniqueFields) {
+        
+        // Get the DIV where we will add out INPUT controls.
+        var entryFields = document.getElementById("entryFields");
+
+        // Clear the contents in case it has already been populated with INPUT controls.
+        while (entryFields.hasChildNodes()) {
+            entryFields.removeChild(entryFields.lastChild);
+        }
+
+        // Create a unique INPUT element for each unique content control tag.
+        for (var i = 0; i < uniqueFields.length; i++) {
+            entryFields.appendChild(document.createTextNode(uniqueFields[i].title + ': '));
+            var input = document.createElement("input");
+            input.type = "text";
+            input.id = uniqueFields[i].tag;
+            entryFields.appendChild(input);
+            entryFields.appendChild(document.createElement("br"));
+        }
+    }
+    
+    /********************/
+    /* Helper functions */
+    /********************/
+    
+    // Helper that deduplicates the set of content controls. Content controls are
+    // considered duplicates if they share the same tag.
+    function removeDuplicateContentControls(contentControls) {
+    
+        var i,
+            len = contentControls.items.length,
+            uniqueFields= [],
+            currentContentControl = {};
+        
+        for (i = 0; i < len; i++) {
+            currentContentControl[contentControls.items[i].tag] = contentControls.items[i].title;
+        }
+        
+        for (i in currentContentControl) {
+            
+            var obj = {
+                tag: i,
+                title: currentContentControl[i]
+            };
+            
+            uniqueFields.push(obj);
+        }
+        
+        return uniqueFields;
+    }
+    
+    function firebaseGetAsync(remote_filename,callback){
+        var storageRef = firebase.storage().ref(remote_filename);
+        storageRef.getDownloadURL().then(function(theUrl,callback) {
+            httpGetAsync(theUrl, callback);
+        });
+    }
+
+    // Helper for calls to the service. 
+    function httpGetAsync(theUrl, callback)
+    {
+        var request = new XMLHttpRequest();
+        request.open("GET", theUrl, true);
+        request.responseType = "blob";
+        request.onreadystatechange = function() { 
+            if (request.readyState === 4 && request.status === 200){
+				// var uInt8Array = new Uint8Array(request.responseText);
+				// var i = uInt8Array.length;
+				// var binaryString = new Array(i);
+				// while (i--)
+				// {
+				//   binaryString[i] = String.fromCharCode(uInt8Array[i]);
+				// }
+				// var data = binaryString.join('');
+                // var base64 = window.btoa(data);
+                // var reader  = new FileReader();
+
+                // reader.onloadend = function () {
+                //   console.log(reader.result); //this is an ArrayBuffer
+                // }
+                // reader.readAsArrayBuffer(file);
+                var myReader = new FileReader();
+                var buffer = "";
+                myReader.readAsDataURL(request.response)
+                myReader.addEventListener("loadend", function(e)
+                {
+                        buffer = e.srcElement.result;//arraybuffer object
+                        var startIndex = buffer.indexOf("base64,"); // when you use the readAsDataURL method the base64 is included in the result, we just need to get that substring, and then insert it using office.js :)
+                        var mybase64 = buffer.substr(startIndex + 7, buffer.length);
+                        console.log("adsfsadfdsa"+ mybase64);
+                        callback(mybase64);
+                });
+                //console.log("adsfsadfdsa"+ buffer);
+                //callback(buffer);
+			}
+        }
+        request.send(null);
+    }
+    // Helper that processes file names into an array. This is because the service returns
+    // the file names as ["filename1.docx","filename2.docx","filename3.docx"].
+    function processResponse(rawResponse) {
+        
+        // Remove quotes.
+        rawResponse = rawResponse.replace(/"/g, "");
+        
+        // Remove opening brackets.
+        rawResponse = rawResponse.replace("[", "");
+        
+        // Remove closing brackets.
+        rawResponse = rawResponse.replace("]", "");
+        
+        // Return an array of file names.
+        return rawResponse.split(',');
+    }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,2 @@
+tronapi==3.0.3
+py-solc==3.2.0

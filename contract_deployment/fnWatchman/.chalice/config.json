@@ -1,0 +1,11 @@
+{
+  "version": "2.0",
+  "app_name": "fnWatchman",
+  "stages": {
+    "dev": {
+      "environment_variables": { "SOLC_BINARY": "./.bin/solc" },
+      "api_gateway_stage": "api"
+    }
+  }
+}
+

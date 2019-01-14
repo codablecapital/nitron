@@ -1,0 +1,125 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. -->
+<!-- See LICENSE in the project root for license information -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>STOken Studio</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.debug.js"></script>
+
+    <!-- LOCAL -->
+    <!-- <link rel="stylesheet" href="node_modules/office-ui-fabric-js/dist/css/fabric.min.css" />
+    <link rel="stylesheet" href="node_modules/office-ui-fabric-js/dist/css/fabric.components.css" /> -->
+
+    <!-- CDN -->
+    <!-- For the Office UI Fabric, go to http://aka.ms/office-ui-fabric to learn more. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.min.css" />
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.components.min.css" />
+
+    <!-- Template styles -->
+    <link href="app.css" rel="stylesheet" type="text/css" />
+
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/modules/bootstrap-daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="assets/modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+  <link rel="stylesheet" href="assets/modules/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="assets/modules/jquery-selectric/selectric.css">
+  <link rel="stylesheet" href="assets/modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
+  <link rel="stylesheet" href="assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+  <link rel="stylesheet" href="assets/css/style.min.css">
+  <link rel="stylesheet" href="assets/css/components.min.css">
+
+</head>
+<!-- [COMPANY_NAME]
+[OFFICER_NAME]
+[OFFICER_TITLE]
+[TOKEN_TICKER]
+[CONTRACT_NAME]
+[NUMBER_OF_TOKENS]
+[LOCKUP_DAYS]
+
+[STATE_OF_INCORPORATION]
+[GOVERNING_LAW_JURISDICTION]
+
+[PREMONEY_VC]
+
+[100_MINUS_THE_DISCOUNT] -->
+
+<body class="ms-font-m ms-welcome">
+    <section id="sideload-msg" class="ms-welcome__main">
+        <h2 class="ms-font-xl ms-fontWeight-semilight ms-fontColor-neutralPrimary ms-u-slideUpIn20">Please sideload your addin to see app body.</h2>
+    </section>
+    <main id="app-body" style="display: none;">
+        <div class="card-body">
+            <strong class="text-muted d-block mb-2" style="padding-top:260px">Company Information</strong>
+            <div class="form-group">
+              <label>Deal Hash</label>
+              <input type="text" id="next_step" class="form-control">
+            </div>
+
+                <div class="card-footer text-right">
+                        <button class="btn btn-primary mr-1" id="sumbitbtn" type="submit">Submit</button>
+                </div>
+    </main>
+
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+    <script src="assets/modules/popper.js"></script>
+    <script src="assets/modules/tooltip.js"></script>
+    <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="assets/modules/moment.min.js"></script>
+    <script src="assets/js/stisla.js"></script>
+    
+    <!-- JS Libraies -->
+    <script src="assets/modules/cleave-js/dist/cleave.min.js"></script>
+    <script src="assets/modules/cleave-js/dist/addons/cleave-phone.us.js"></script>
+    <script src="assets/modules/jquery-pwstrength/jquery.pwstrength.min.js"></script>
+    <script src="assets/modules/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="assets/modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+    <script src="assets/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+    <script src="assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="assets/modules/select2/dist/js/select2.full.min.js"></script>
+    <script src="assets/modules/jquery-selectric/jquery.selectric.min.js"></script>
+  
+    <!-- Page Specific JS File -->
+    <script src="assets/js/page/forms-advanced-forms.js"></script>
+    
+    <!-- Template JS File -->
+    <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/js/fabric.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+<!-- Add the stylesheet to the head -->
+<script src="assets/js/scripts.js"></script>
+<script src="assets/js/custom.js"></script>
+
+<script src="https://unpkg.com/clippyjs@latest"></script>
+    <script>
+            $(document).ready(function () {
+            console.log("document ready");
+            // Use this to check whether the new API is supported in the Word client.
+
+                // Load the story names from the service into the UI. 
+                $('#sideload-msg').hide();
+                $('#app-body').show();
+                $('#sumbitbtn').click(run);    
+        });
+        function run(){
+            if ($('#next_step').val()=="registertoken"){
+                window.location.assign('./'+$('#next_step').val()+'.html');
+            }
+        }
+    </script>
+
+</body>
+
+</html>
